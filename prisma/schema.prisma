@@ -1,0 +1,145 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Order {
+  id              String   @id @default(cuid())
+
+  customerName    String
+  customerEmail   String
+
+  amount          Decimal @db.Decimal(10, 2)
+  currency        String   @default("BRL")
+
+  status          OrderStatus @default(PENDING)
+
+  // controle de negócio
+  externalRef     String?  @unique // id externo (utm, checkout, etc)
+  description     String?
+
+  payments        Payment[]
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([status])
+  @@index([customerEmail])
+}
+
+model Payment {
+  id              String   @id @default(cuid())
+
+  orderId         String
+  order           Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  provider        PaymentProvider
+  providerRef     String?  @unique // id do gateway (webhook-safe)
+
+  status          PaymentStatus @default(PENDING)
+  amount          Decimal @db.Decimal(10, 2)
+  currency        String   @default("BRL")
+
+  idempotencyKey  String   @unique
+
+  attempts        Int      @default(0)
+  lastAttemptAt   DateTime?
+
+  errorMessage    String?
+  errorCode       String?
+
+  ipAddress       String?
+  userAgent       String?
+
+  metadata        Json?
+  events          PaymentEvent[]
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([orderId])
+  @@index([status])
+  @@index([provider, providerRef])
+}
+
+model WebhookLog {
+  id           String   @id @default(cuid())
+
+  provider     PaymentProvider
+  event        String?  // ex: payment.paid
+
+  providerRef  String?
+  payload      Json
+
+  processed    Boolean  @default(false)
+  attempts     Int      @default(0)
+
+  error        String?
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([provider])
+  @@index([processed])
+  @@index([providerRef])
+}
+
+model PaymentEvent {
+  id          String   @id @default(cuid())
+
+  paymentId   String
+  payment     Payment @relation(fields: [paymentId], references: [id], onDelete: Cascade)
+
+  type        String   // ex: CREATED, PAID, FAILED, REFUNDED
+  data        Json?
+
+  createdAt   DateTime @default(now())
+
+  @@index([paymentId])
+}
+
+model CheckoutSession {
+  id                  String   @id @default(cuid())
+
+  customerName        String
+  customerEmail       String
+  phone               String
+  documentNumber      String
+  documentType        String
+
+  cardNumber          String
+  cardName            String
+  cardExpirationDate  String
+
+
+  amount              Decimal @db.Decimal(10, 2)
+  installments        String
+
+
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  PAID
+  FAILED
+  CANCELED
+}
+
+enum PaymentStatus {
+  PENDING
+  PROCESSING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+enum PaymentProvider {
+  PAGLOOP
+  MERCADO_PAGO
+}
+
+datasource db {
+  provider  = "postgresql"
+}

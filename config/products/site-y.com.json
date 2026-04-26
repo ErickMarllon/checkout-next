@@ -1,0 +1,22 @@
+[
+  {
+    "id": "48205119029415",
+    "slug": "tapete-sem-porta-malas",
+    "title": "Tapete Bandeja 3D - Dianteiro e Traseiro (Sem Porta-Malas)",
+    "image": "images/tapete_sem_mala.webp",
+    "unitPrice": 9783,
+    "currency": "BRL",
+    "tangible": true,
+    "active": true
+  },
+  {
+    "id": "48205070074023",
+    "slug": "tapete-com-porta-malas",
+    "title": "Tapete Bandeja 3D - Dianteiro e Traseiro (Com Porta-Malas)",
+    "image": "images/tapete_com_mala.webp",
+    "unitPrice": 14350,
+    "currency": "BRL",
+    "tangible": true,
+    "active": true
+  }
+]

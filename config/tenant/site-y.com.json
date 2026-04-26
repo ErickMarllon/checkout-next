@@ -1,0 +1,40 @@
+{
+  "brand": {
+    "name": "Eletrocar",
+    "segment": "Carpetes e Tapeçaria",
+    "copyright": "Todos os direitos reservados"
+  },
+  "company": {
+    "legalName": "Eletrocar Parts Comercio Fisico e Online de Pecas Automotivas e Produtos em Geral Ltda",
+    "cnpj": "40.201.461/0001-47",
+    "year": 2026
+  },
+  "address": {
+    "street": "Rua Afonsina de Oliveira Rangel, 188",
+    "district": "Vila Maria",
+    "zipCode": "27313-430",
+    "city": "Barra Mansa",
+    "state": "RJ",
+    "country": "Brasil"
+  },
+  "contact": {
+    "whatsapp": "(21) 97970-4490",
+    "phone": "(21) 3089-1051",
+    "email": "sac@eletrocartapeceria.com"
+  },
+  "payments": [
+    { "label": "AURA", "className": "text-orange-500" },
+    { "label": "DISC" },
+    { "label": "MC", "className": "text-red-500" },
+    { "label": "DINERS" },
+    { "label": "VISA", "className": "text-blue-700" },
+    { "label": "AMEX", "className": "text-blue-500" },
+    { "label": "PIX", "className": "text-success" },
+    { "label": "ELO" }
+  ],
+  "security": {
+    "title": "PAGAMENTO",
+    "subtitle": "100% SEGURO",
+    "icon": "lock"
+  }
+}
