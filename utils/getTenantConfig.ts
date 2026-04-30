@@ -6,7 +6,7 @@ export function getTenantConfig(host: string) {
   const isDev = getMode();
   const cleanHost = host.split(":")[0];
 
-  let filePath = `/var/www/config/checkout/tenant/${cleanHost}.json`;
+  let filePath = `/var/www/config/checkoutNext/tenant/${cleanHost}.json`;
 
   if (isDev) {
     filePath = `./config/tenant/${cleanHost}.json`;

@@ -7,20 +7,20 @@ AS IMAGENS DEVE FICAR DENTRO DA PASTA:
 ---
 
 OS PRODUTOS DEVEM FICAR DENTRO DA PASTA:
-/var/www/config/checkout/products/site-x/config.json
-/var/www/config/checkout/products/site-y/config.json
+/var/www/config/checkoutNext/products/site-x/config.json
+/var/www/config/checkoutNext/products/site-y/config.json
 
 ---
 
 OS PIXELS DEVEM FICAR DENTRO DA PASTA:
-/var/www/config/checkout/pixels/site-x/config.json
-/var/www/config/checkout/pixels/site-y/config.json
+/var/www/config/checkoutNext/pixels/site-x/config.json
+/var/www/config/checkoutNext/pixels/site-y/config.json
 
 ---
 
 OS FOOTERS DEVEM FICAR DENTRO DA PASTA:
-/var/www/config/checkout/footer/site-x.com.json
-/var/www/config/checkout/footer/site-y.com.json
+/var/www/config/checkoutNext/footer/site-x.com.json
+/var/www/config/checkoutNext/footer/site-y.com.json
 
 ---
 

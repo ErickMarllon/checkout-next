@@ -8,7 +8,7 @@ export function getProducts(host: string) {
   const isDev = getMode();
   const cleanHost = host.split(":")[0];
 
-  let filePath = `/var/www/config/checkout/products/${cleanHost}.json`;
+  let filePath = `/var/www/config/checkoutNext/products/${cleanHost}.json`;
 
   if (isDev) {
     filePath = `./config/products/${cleanHost}.json`;
